@@ -159,3 +159,54 @@
   }
   .metaphor-arrow{font-size:40px}
 }
+
+
+/* layout-v5 */
+.achievements-photo{
+  display:block!important;
+  align-self:start!important;
+  min-height:0!important;
+  overflow:visible!important;
+}
+.achievements-photo .portrait-main{
+  width:100%;
+  overflow:hidden;
+  border:1px solid #807a70;
+  border-radius:6px;
+  background:#111110;
+}
+.achievements-photo .portrait-main img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-width:100%;
+}
+.clients .wrap{
+  border-top:1px solid #2e2c28;
+  padding-top:82px;
+  padding-bottom:92px;
+}
+.closing-cta .wrap{
+  border-top:1px solid #2e2c28;
+  padding-top:20px;
+  padding-bottom:96px;
+}
+.closing-cta .final-cta{
+  margin-top:64px;
+}
+@media(max-width:1100px){
+  .achievements-photo{
+    max-width:560px;
+    width:100%;
+  }
+}
+@media(max-width:760px){
+  .clients .wrap{
+    padding-top:56px;
+    padding-bottom:64px;
+  }
+  .closing-cta .wrap{
+    padding-top:0;
+    padding-bottom:66px;
+  }
+}
