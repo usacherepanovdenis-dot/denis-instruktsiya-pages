@@ -1,0 +1,29 @@
+name: Import main portrait
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/import-main-portrait.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download portrait from main site
+        run: |
+          mkdir -p assets
+          curl -fL "https://denis-cherepanov.ru/assets/portrait-arms-crossed.png" -o assets/portrait-arms-crossed.png
+          test -s assets/portrait-arms-crossed.png
+      - name: Commit portrait
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/portrait-arms-crossed.png
+          git commit -m "Add main site portrait" || exit 0
+          git push
