@@ -1,0 +1,28 @@
+name: Bootstrap site image
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/bootstrap-assets.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  copy-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download current portrait asset
+        run: |
+          mkdir -p pages
+          curl -fL "https://denis-instruktsiya.netlify.app/pages/page-1.jpg" -o pages/page-1.jpg
+      - name: Commit image
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pages/page-1.jpg
+          git commit -m "Add portrait asset" || exit 0
+          git push
